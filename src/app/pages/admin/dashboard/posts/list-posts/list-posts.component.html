@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <h2><a>List</a></h2>
+  <div class="spacer"></div>
+  <a [routerLink]="['./add']">
+    <button mat-raised-button class="button-icon">
+      ADD NEW  <mat-icon>add</mat-icon>
+    </button>
+  </a>
+</mat-toolbar>
+
+<div style="margin-top: 20px;">
+  <app-table></app-table>
+</div>

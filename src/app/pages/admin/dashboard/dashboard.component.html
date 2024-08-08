@@ -1,0 +1,36 @@
+<div class="onePageContainer">
+  <mat-toolbar>
+    <span>
+<!--      <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon> </button> -->
+      Dashboard
+    </span>
+    <div class="spacer"></div>
+
+    <button mat-button class="button-icon">
+      {{ this.currentUser.username }} as {{ this.currentUser.role }}
+    </button>
+    <button mat-button (click)="logout()" class="button-icon">LOGOUT <mat-icon>exit_to_app</mat-icon> </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="container">
+    <mat-sidenav #sidenav mode="side" opened class="sidenav" >
+      <mat-selection-list>
+        <ng-container *ngFor="let item of routing">
+          <a [routerLink]="['/admin/', env.defaultLang, item.value]" routerLinkActive="active-link">
+            <mat-list-option >
+              <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
+              <h4 mat-line>{{ item.text }}</h4>
+            </mat-list-option>
+          </a>
+        </ng-container>
+      </mat-selection-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="content-container">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
